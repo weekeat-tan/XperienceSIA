@@ -1,25 +1,29 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator, createAppContainer } from "react-navigation";
 import React, { Component } from "react";
 import { Text } from "react-native";
 import { Router, Scene, Stack } from "react-native-router-flux";
 
 import HomeScreen from "./src/screens/HomeScreen";
 import SelectMoviesScreen from "./src/screens/SelectMoviesScreen";
-import ServicesHomeScreen from './src/screens/ServicesScreen';
+import ServicesHomeScreen from "./src/screens/ServicesScreen";
+import AmenitiesScreen from "./src/screens/AmenitiesScreen";
+import KrisshopScreen from "./src/screens/KrisshopScreen";
 
 const navigator = createStackNavigator(
   {
     Welcome: HomeScreen,
     ServicesHome: ServicesHomeScreen,
     SelectMovies: SelectMoviesScreen,
+    Amenities: AmenitiesScreen,
+    Krisshop: KrisshopScreen
   },
   {
-    initialRouteName: 'Welcome',
+    initialRouteName: "Welcome",
     defaultNavigationOptions: {
-      title: 'HungrySIA'
+      title: "HungrySIA"
     }
   }
-)
+);
 
 export default createAppContainer(navigator);
 

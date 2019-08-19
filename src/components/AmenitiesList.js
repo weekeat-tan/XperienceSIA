@@ -2,21 +2,25 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-const Category = ({ title, imageSource }) => {
+const AmenitiesList = ({
+  title,
+  pillowQty,
+  blanketQty,
+  hotTowelQty,
+  newspaperQty
+}) => {
   return (
-    <View>
-      <Image style={styles.imageStyle} source={imageSource} />
+    <View style={{ alignItems: "center" }}>
       <Text style={styles.textStyle}>{title}</Text>
+      <Text>Pillows Selected : {pillowQty}</Text>
+      <Text>Blankets Selected : {blanketQty}</Text>
+      <Text>Hot Towels Selected : {hotTowelQty}</Text>
+      <Text>Newspapers Selected : {newspaperQty}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  imageStyle: {
-    height: 150,
-    width: 150,
-    marginHorizontal: 15
-  },
   textStyle: {
     margin: 20,
     textAlign: "center"
@@ -28,4 +32,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Category;
+export default AmenitiesList;

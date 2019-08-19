@@ -1,14 +1,12 @@
-import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import React, { Component } from "react";
+import { View, Text, StyleSheet, WebView } from "react-native";
 import { withNavigation } from "react-navigation";
 
-const KrisshopScreen = () => {
-  return (
-    <View>
-      <Text>Krisshop Screen</Text>
-    </View>
-  );
-};
+class KrisshopScreen extends Component {
+  render() {
+    return <WebView source={{ uri: "https://www.krisshop.com/en/" }} />;
+  }
+}
 
 const styles = StyleSheet.create({});
 

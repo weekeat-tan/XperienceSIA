@@ -8,27 +8,33 @@ const ServicesHomeScreen = ({ navigation }) => {
   return (
     <ScrollView>
       <View>
-        <Text style={styles.introStyle}>Please choose the category that you need help with</Text>
+        <Text style={styles.introStyle}>
+          Please choose the category that you need help with
+        </Text>
 
         <View style={styles.categoryStyle}>
           <Category
             title="Food"
             imageSource={require("../../assets/foodcat.jpg")}
           />
-          <Category
-            title="Amenitites"
-            imageSource={require("../../assets/amenitycat.jpg")}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("Amenities")}>
+            <Category
+              title="Amenitites"
+              imageSource={require("../../assets/amenitycat.jpg")}
+            />
+          </TouchableOpacity>
         </View>
         <View style={styles.categoryStyle}>
           <Category
             title="Beverages"
             imageSource={require("../../assets/bvgcat.jpg")}
           />
-          <Category
-            title="KrisShop"
-            imageSource={require("../../assets/krisshopcat.jpg")}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("Krisshop")}>
+            <Category
+              title="KrisShop"
+              imageSource={require("../../assets/krisshopcat.jpg")}
+            />
+          </TouchableOpacity>
         </View>
         <View style={styles.categoryStyle}>
           <Category
@@ -46,7 +52,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: "center",
     marginVertical: 20,
-    marginHorizontal: 5,
+    marginHorizontal: 5
     // borderWidth: 2,
     // borderColor: 'black'
   },
