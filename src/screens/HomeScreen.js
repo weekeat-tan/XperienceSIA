@@ -4,7 +4,8 @@ import { Actions } from "react-native-router-flux";
 
 import { Card, Button, CardSection } from "../components/common";
 
-const Home = ({ navigation }) => {
+const Home = (props) => {
+  const navigation = props.navigation;
   return (
     <View style={styles.backgroundStyle}>
       <Image
@@ -18,14 +19,14 @@ const Home = ({ navigation }) => {
           <Button
             buttonText={"Entertainment"}
             onPress={() => navigation.navigate("SelectMovies")}
-            // onPress={() => Actions.movies()}
+          // onPress={() => Actions.movies()}
           />
         </CardSection>
         <CardSection>
           <Button
             buttonText={"Services"}
-            onPress={() => navigation.navigate("ServicesHome")}
-            // onPress={() => Actions.services()}
+            onPress={() => navigation.navigate({ routeName: "ServicesHome", key: "home" })}
+          // onPress={() => Actions.services()}
           />
         </CardSection>
       </Card>

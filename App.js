@@ -8,14 +8,50 @@ import SelectMoviesScreen from "./src/screens/SelectMoviesScreen";
 import ServicesHomeScreen from "./src/screens/ServicesScreen";
 import AmenitiesScreen from "./src/screens/AmenitiesScreen";
 import KrisshopScreen from "./src/screens/KrisshopScreen";
+import BeveragesScreen from "./src/screens/BeveragesScreen";
+import OrderProcessingScreen from "./src/screens/OrderProcessingScreen";
 
 const navigator = createStackNavigator(
   {
-    Welcome: HomeScreen,
-    ServicesHome: ServicesHomeScreen,
-    SelectMovies: SelectMoviesScreen,
-    Amenities: AmenitiesScreen,
-    Krisshop: KrisshopScreen
+    Welcome: {
+      screen: HomeScreen,
+    },
+    ServicesHome: {
+      screen: ServicesHomeScreen,
+      navigationOptions: {
+        title: 'Services'
+      }
+    },
+    SelectMovies: {
+      screen: SelectMoviesScreen,
+      navigationOptions: {
+        title: 'Movies'
+      }
+    },
+    Amenities: {
+      screen: AmenitiesScreen,
+      navigationOptions: {
+        title: 'Amenities'
+      }
+    },
+    Beverages: {
+      screen: BeveragesScreen,
+      navigationOptions: {
+        title: 'Beverages'
+      }
+    },
+    Krisshop: {
+      screen: KrisshopScreen,
+      navigationOptions: {
+        title: 'KrisShop'
+      }
+    },
+    OrderProcessing: {
+      screen: OrderProcessingScreen,
+      navigationOptions: {
+        title: 'Processing'
+      },
+    }
   },
   {
     initialRouteName: "Welcome",

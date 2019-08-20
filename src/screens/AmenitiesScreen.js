@@ -82,17 +82,17 @@ const AmenitiesScreen = () => {
       </View>
 
       {state.pillow != 0 ||
-      state.blanket != 0 ||
-      state.hotTowel != 0 ||
-      state.newspaper != 0 ? (
-        <AmenitiesList
-          title="List of items selected"
-          pillowQty={state.pillow}
-          blanketQty={state.blanket}
-          hotTowelQty={state.hotTowel}
-          newspaperQty={state.newspaper}
-        />
-      ) : null}
+        state.blanket != 0 ||
+        state.hotTowel != 0 ||
+        state.newspaper != 0 ? (
+          <AmenitiesList
+            title="List of items selected"
+            pillowQty={state.pillow}
+            blanketQty={state.blanket}
+            hotTowelQty={state.hotTowel}
+            newspaperQty={state.newspaper}
+          />
+        ) : null}
     </View>
   );
 };

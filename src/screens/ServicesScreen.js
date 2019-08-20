@@ -1,8 +1,27 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import Category from "../components/Category";
 import { withNavigation } from "react-navigation";
 import { ScrollView } from "react-native-gesture-handler";
+
+const alertMessage = (navigation) => {
+  Alert.alert(
+    'Attendant Service', // title
+    'Do you require on-site attendant assistance?', // message
+    [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+      {
+        text: 'Yes',
+        onPress: () => navigation.navigate('OrderProcessing'),
+        style: 'default'
+      },
+    ], // button
+    { cancelable: false },
+  );
+};
 
 const ServicesHomeScreen = ({ navigation }) => {
   return (
@@ -25,10 +44,13 @@ const ServicesHomeScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.categoryStyle}>
-          <Category
-            title="Beverages"
-            imageSource={require("../../assets/bvgcat.jpg")}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("Beverages")}>
+            <Category
+              title="Beverages"
+              imageSource={require("../../assets/bvgcat.jpg")}
+            />
+          </TouchableOpacity>
+
           <TouchableOpacity onPress={() => navigation.navigate("Krisshop")}>
             <Category
               title="KrisShop"
@@ -37,10 +59,14 @@ const ServicesHomeScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.categoryStyle}>
-          <Category
-            title="Call"
-            imageSource={require("../../assets/callcat.jpg")}
-          />
+          <TouchableOpacity onPress={() => alertMessage(navigation)}
+          >
+            <Category
+              title="On-site Service"
+              imageSource={require("../../assets/callcat.jpg")}
+            />
+          </TouchableOpacity>
+
         </View>
       </View>
     </ScrollView>
