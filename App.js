@@ -6,15 +6,28 @@ import { Router, Scene, Stack } from "react-native-router-flux";
 import HomeScreen from "./src/screens/HomeScreen";
 import SelectMoviesScreen from "./src/screens/SelectMoviesScreen";
 import ServicesHomeScreen from "./src/screens/ServicesScreen";
+import FoodScreen from "./src/screens/FoodScreen";
 import AmenitiesScreen from "./src/screens/AmenitiesScreen";
 import KrisshopScreen from "./src/screens/KrisshopScreen";
 import BeveragesScreen from "./src/screens/BeveragesScreen";
 import OrderProcessingScreen from "./src/screens/OrderProcessingScreen";
+import MovieRecommendationsScreen1 from "./src/screens/MovieRecommendationsScreen1";
+import MovieRecommendationsScreen2 from "./src/screens/MovieRecommendationsScreen2";
+import MovieRecommendationsScreen3 from "./src/screens/MovieRecommendationsScreen3";
+
+
+import MoviePlayerScreen from "./src/screens/MoviePlayerScreen";
 
 const navigator = createStackNavigator(
   {
     Welcome: {
       screen: HomeScreen,
+    },
+    SelectMovies: {
+      screen: SelectMoviesScreen,
+      navigationOptions: {
+        title: 'Movies'
+      }
     },
     ServicesHome: {
       screen: ServicesHomeScreen,
@@ -22,10 +35,10 @@ const navigator = createStackNavigator(
         title: 'Services'
       }
     },
-    SelectMovies: {
-      screen: SelectMoviesScreen,
+    Food: {
+      screen: FoodScreen,
       navigationOptions: {
-        title: 'Movies'
+        title: 'Food'
       }
     },
     Amenities: {
@@ -50,7 +63,31 @@ const navigator = createStackNavigator(
       screen: OrderProcessingScreen,
       navigationOptions: {
         title: 'Processing'
-      },
+      }
+    },
+    MovieRecommendations1: {
+      screen: MovieRecommendationsScreen1,
+      navigationOptions: {
+        title: 'Movies Playlist'
+      }
+    },
+    MovieRecommendations2: {
+      screen: MovieRecommendationsScreen2,
+      navigationOptions: {
+        title: 'Movies Playlist'
+      }
+    },
+    MovieRecommendations3: {
+      screen: MovieRecommendationsScreen3,
+      navigationOptions: {
+        title: 'Movies Playlist',
+      }
+    },
+    playerScreen: {
+      screen: MoviePlayerScreen,
+      navigationOptions: {
+        header: null
+      }
     }
   },
   {

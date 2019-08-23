@@ -1,9 +1,9 @@
 import React, { useReducer } from "react";
-import { View, Text, StyleSheet, FlatList, ScrollView, Alert } from "react-native";
+import { View, Text, StyleSheet, FlatList, ScrollView, Alert, TouchableOpacity } from "react-native";
 import { withNavigation } from "react-navigation";
 import BeveragesList from '../components/BeveragesList';
 import BeveragesImage from '../components/BeveragesImage';
-import { TouchableOpacity } from "react-native-gesture-handler";
+// import { TouchableOpacity } from "react-native-gesture-handler";
 
 const alertMessage = (beveragesType, navigation) => {
   Alert.alert(
@@ -76,7 +76,6 @@ const BeveragesScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
     </ScrollView>
-
   );
 };
 

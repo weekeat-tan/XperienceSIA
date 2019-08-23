@@ -1,38 +1,69 @@
 import React, { useReducer } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  Alert
+} from "react-native";
 import Category from "../components/Category";
 import AmenitiesList from "../components/AmenitiesList";
+import { Button, Card, CardSection } from "../components/common";
+
+const alertMessage = (navigation, state) => {
+  Alert.alert(
+    "Confirm Amenities?", // title
+    `You have selected a total of ${state.pillow + // message
+      state.blanket +
+      state.hotTowel +
+      state.newspaper} items.`,
+    [
+      // button
+      {
+        text: "Cancel",
+        style: "cancel"
+      },
+      {
+        text: "Confirm",
+        onPress: () => navigation.navigate("OrderProcessing"),
+        style: "default"
+      }
+    ],
+    { cancelable: false }
+  );
+};
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "change_pillow":
       if (state.pillow > 0) {
-        alert("This item has already been selected.");
-        return { ...state, pillow: state.pillow + 0 };
+        Alert.alert(`1 ${action.name} has been removed.`);
+        return { ...state, pillow: state.pillow - 1 };
       }
       return { ...state, pillow: state.pillow + action.payload };
     case "change_blanket":
       if (state.blanket > 0) {
-        alert("This item has already been selected.");
-        return { ...state, blanket: state.blanket + 0 };
+        Alert.alert(`1 ${action.name} has been removed.`);
+        return { ...state, blanket: state.blanket - 1 };
       }
       return { ...state, blanket: state.blanket + action.payload };
     case "change_hotTowel":
       if (state.hotTowel > 0) {
-        alert("This item has already been selected.");
-        return { ...state, hotTowel: state.hotTowel + 0 };
+        Alert.alert(`1 ${action.name} has been removed.`);
+        return { ...state, hotTowel: state.hotTowel - 1 };
       }
       return { ...state, hotTowel: state.hotTowel + action.payload };
     case "change_newspaper":
       if (state.newspaper > 0) {
-        alert("This item has already been selected.");
-        return { ...state, newspaper: state.newspaper + 0 };
+        Alert.alert(`1 ${action.name} has been removed.`);
+        return { ...state, newspaper: state.newspaper - 1 };
       }
       return { ...state, newspaper: state.newspaper + action.payload };
   }
 };
 
-const AmenitiesScreen = () => {
+const AmenitiesScreen = ({ navigation }) => {
   const [state, dispatch] = useReducer(reducer, {
     pillow: 0,
     blanket: 0,
@@ -41,11 +72,15 @@ const AmenitiesScreen = () => {
   });
 
   return (
-    <View>
-      <Text style={styles.titleStyle}>Amenities</Text>
+    <ScrollView>
+      <Text style={styles.introStyle}>
+        Feel free to request the following items below
+      </Text>
       <View style={styles.categoryStyle}>
         <TouchableOpacity
-          onPress={() => dispatch({ type: "change_pillow", payload: 1 })}
+          onPress={() =>
+            dispatch({ type: "change_pillow", payload: 1, name: "Pillow" })
+          }
         >
           <Category
             title="Pillows"
@@ -54,7 +89,9 @@ const AmenitiesScreen = () => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => dispatch({ type: "change_blanket", payload: 1 })}
+          onPress={() =>
+            dispatch({ type: "change_blanket", payload: 1, name: "Blanket" })
+          }
         >
           <Category
             title="Blankets"
@@ -64,7 +101,9 @@ const AmenitiesScreen = () => {
       </View>
       <View style={styles.categoryStyle}>
         <TouchableOpacity
-          onPress={() => dispatch({ type: "change_hotTowel", payload: 1 })}
+          onPress={() =>
+            dispatch({ type: "change_hotTowel", payload: 1, name: "Hot Towel" })
+          }
         >
           <Category
             title="Hot Towel"
@@ -72,7 +111,13 @@ const AmenitiesScreen = () => {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => dispatch({ type: "change_newspaper", payload: 1 })}
+          onPress={() =>
+            dispatch({
+              type: "change_newspaper",
+              payload: 1,
+              name: "Newspaper"
+            })
+          }
         >
           <Category
             title="Newspapers"
@@ -82,9 +127,10 @@ const AmenitiesScreen = () => {
       </View>
 
       {state.pillow != 0 ||
-        state.blanket != 0 ||
-        state.hotTowel != 0 ||
-        state.newspaper != 0 ? (
+      state.blanket != 0 ||
+      state.hotTowel != 0 ||
+      state.newspaper != 0 ? (
+        <>
           <AmenitiesList
             title="List of items selected"
             pillowQty={state.pillow}
@@ -92,22 +138,34 @@ const AmenitiesScreen = () => {
             hotTowelQty={state.hotTowel}
             newspaperQty={state.newspaper}
           />
-        ) : null}
-    </View>
+          <View>
+            <Card>
+              <CardSection>
+                <Button
+                  buttonText={"Submit"}
+                  onPress={() => alertMessage(navigation, state)}
+                />
+              </CardSection>
+            </Card>
+          </View>
+        </>
+      ) : null}
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  titleStyle: {
-    fontWeight: "bold",
-    fontSize: 24,
-    textAlign: "center",
-    marginVertical: 20,
-    marginHorizontal: 5
-  },
   categoryStyle: {
     flexDirection: "row",
     justifyContent: "center"
+  },
+  introStyle: {
+    fontSize: 24,
+    textAlign: "center",
+    marginVertical: 20,
+    marginHorizontal: 5,
+    fontWeight: "bold",
+    fontStyle: "italic"
   }
 });
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View, Dimensions, StyleSheet, Image } from "react-native";
-import { Actions } from "react-native-router-flux";
+// import { Actions } from "react-native-router-flux";
 
 import { Card, Button, CardSection } from "../components/common";
 
@@ -9,27 +9,25 @@ const Home = (props) => {
   return (
     <View style={styles.backgroundStyle}>
       <Image
-        style={{ alignSelf: "center", marginTop: 20 }}
-        source={require("../../assets/sia_logo.png")}
+        style={{ alignSelf: "center", marginTop: 20, height: 110, width: 300 }}
+        source={require("../../assets/sia-logo.png")}
       />
       <Text style={styles.textStyleOne}>Welcome Onboard</Text>
       <Text style={styles.textStyleTwo}>What would you like to do?</Text>
-      <Card>
-        <CardSection>
-          <Button
-            buttonText={"Entertainment"}
-            onPress={() => navigation.navigate("SelectMovies")}
-          // onPress={() => Actions.movies()}
-          />
-        </CardSection>
-        <CardSection>
-          <Button
-            buttonText={"Services"}
-            onPress={() => navigation.navigate({ routeName: "ServicesHome", key: "home" })}
-          // onPress={() => Actions.services()}
-          />
-        </CardSection>
-      </Card>
+      <CardSection>
+        <Button
+          buttonText={"Entertainment"}
+          onPress={() => navigation.navigate("SelectMovies")}
+        // onPress={() => Actions.movies()}
+        />
+      </CardSection>
+      <CardSection>
+        <Button
+          buttonText={"Services"}
+          onPress={() => navigation.navigate({ routeName: "ServicesHome", key: "home" })}
+        // onPress={() => Actions.services()}
+        />
+      </CardSection>
     </View>
   );
 };

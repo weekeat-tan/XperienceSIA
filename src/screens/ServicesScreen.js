@@ -32,10 +32,12 @@ const ServicesHomeScreen = ({ navigation }) => {
         </Text>
 
         <View style={styles.categoryStyle}>
-          <Category
-            title="Food"
-            imageSource={require("../../assets/foodcat.jpg")}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("Food")}>
+            <Category
+              title="Food"
+              imageSource={require("../../assets/foodcat.jpg")}
+            />
+          </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("Amenities")}>
             <Category
               title="Amenitites"
